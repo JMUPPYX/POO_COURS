@@ -3,11 +3,11 @@
 ![capture d'ecran](/img_readme/poo.jpg)
 
 **Les 5 principes de la POO :** 
-- Abstraction 
-- Encapsulation
-- Héritage
-- Objet / classe
-- Polymorphisme
+- Abstraction (& l'interface)= permet le contrôle du code tel classe va avoir tel fonctionnalité
+- Encapsulation = securise le code
+- Héritage = evite la répétition
+- Objet / classe = organise le code
+- Polymorphisme = deux fonctions qui ont le même nom sur deux objets qui sont "similaires" mais qui n'auront pas les même répercutions
 
 **Les 3 principes de la classe**:
  - la fonction constructeur
@@ -243,7 +243,7 @@ public function __construct($prenom,$nom,$age,$voiture){
     }
 ````
 
-Si l'on souhaite modifier la présentation de notre **class Patron** (Bonjour et non Salut) c'est possible on va redefinir la fonction présentation pour qu'elle agisse autrement dans notre classe Patron directement c'est **LE POLYMORPHISME** deux fonctions qui ont le même nom sur deux objets qui sont "similaires" mais qui n'auront pas les même répercutions, dans notre cas le patron va dire "Bonjour" et non Salut: 
+Si l'on souhaite modifier la présentation de notre **class Patron** (Bonjour et non Salut) c'est possible on va redefinir la **fonction présentation** pour qu'elle agisse autrement dans notre **classe Patron** directement c'est **LE POLYMORPHISME** deux fonctions qui ont le même nom sur deux objets qui sont "similaires" mais qui n'auront pas les même répercutions, dans notre cas le patron va dire "Bonjour" et non Salut: 
 
 ````php
 class Patron extends Employe{
