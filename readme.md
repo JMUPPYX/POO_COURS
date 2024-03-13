@@ -5,7 +5,7 @@
 **Les 5 principes de la POO :** 
 - Abstraction (& l'interface)= permet le contrôle du code tel classe va avoir tel fonctionnalité
 - Encapsulation = securise le code
-- Héritage = evite la répétition
+- Héritage = evite la répétition / réutilisation du code
 - Objet / classe = organise le code
 - Polymorphisme = deux fonctions qui ont le même nom sur deux objets qui sont "similaires" mais qui n'auront pas les même répercutions
 
@@ -289,15 +289,17 @@ Cela fonctionne l'age s'affiche.
 **Class Abstraites et Interfaces**:
 La notion abstraction comporte les interfaces et les classes abstraites
 
-**INTERFACE**: c'est un contrat qu'une class "signe" et qu'elle doit respecter
+**INTERFACE**: c'est un contrat qu'une classe "signe" et qu'elle doit respecter, elle sert à définir des fonctionnalitées. Elle indique qu'une classe possède certaines méthodes.(contraintes).
+Permet aux développeurs de créer des programmes en spécifiant les méthodes publiques qu’une classe doit implémenter, sans entrer dans les détails de l’implémentation de ces méthodes.Et définie comme une classe, mais avec le mot-clé **interface**
+Les interfaces sont des outils puissants pour définir des contrats entre les classes et favorisent la réutilisation du code.
 
-Création de la fonction **"fairetravailler"** elle va nous permettre de recevoir les objets et quelle fasse un **var_dump** pour afficher le resultat d'une méthode qui existe sur l'objet dans notre cas = **public function travailler** quelque soit l'objet on veut être sur que l'objet ait une fonction **travailler**
+- Création de la fonction **"fairetravailler"** elle va nous permettre de recevoir les objets et quelle fasse un **var_dump** pour afficher le resultat d'une méthode qui existe sur l'objet dans notre cas = **public function travailler** quelque soit l'objet on veut être sur que l'objet ait une fonction **travailler**
 ````php
 function faireTravailler($objet){
     var_dump("Travail en cours : {$objet->travailler()}");
 }
 ````
-En utilisant l'INTERFACE (contrôle du code) on met en place un "contrat" qui définit le(s) méthode(s) que l'on veut obligatoire sur tous les objets définis, dans notre cas ma méthode **public function travailler()**
+- En utilisant l'INTERFACE (contrôle du code) on met en place un "contrat" qui définit le(s) méthode(s) que l'on veut obligatoire sur tous les objets définis, dans notre cas ma méthode **public function travailler()**
 ````php
 interface Travailleur{
     public function travailler();
@@ -318,7 +320,8 @@ class Employe implements Travailleur{
         }
     }
 ````
-    On peut utiliser la fonction **fairetravailler** et  **$employe1** qui est notre objet de la **class Employe**, quelque soit l'objet il doit avoir la fonction **travailler**
+On peut utiliser la fonction **fairetravailler** et  **$employe1** qui est notre objet de la **class Employe**, quelque soit l'objet il doit avoir la fonction **travailler**
+
 ````php
     faireTravailler($employe1);
     function faireTravailler($objet){
@@ -411,19 +414,25 @@ function faireTravailler($objet){
 }
 
 ````
-= **ABSTRACTION** qui permet de passer n'importe quel objet du moment qu'il a la **fonction travailler**.
-= C'est aussi le **POLYMORPHISME** dans notre cas on appel la même **fonction fairetravailler**  qui prend différente forme en fonction de l'objet qui est passé,dans notre cas **faireTravailler($employe1);** et **faireTravailler($etudiant);**
 
 **CLASS ABSTRACT**:
-L'interface definit des méthodes abstract et permet de contrôler que l'interface utilise bien la ou les  méthodes et qu'elles sont bien présentes (contrat) dans le(s) class fille(s).
-Une class abstract indique que les class qui hérite vont devoir implementé tel ou tel fonction et auront des propriétés non abstract utilisable plus tard
+Une classe abstraite est un concept de la programmation orientée objet (POO).
+Elle est aussi abstraite qu’on peut l’imaginer : c’est comme un « espace vide » inachevé pour un groupe de classes futures.
+Imagine-le comme un plan que nous utiliserons plus tard pour créer des classes concrètes.
 
-Nous créeons une nouvelle class Humain  pour abstraire les fonctionnalités communes à tous les travailleurs 
-La class doit obligatoirement  être déclaré **abstract** si elle possède une méthode **abstract**
+Une class abstract indique que les classes qui héritent vont devoir implementer tel ou tel fonction et auront des propriétés non abstract utilisable plus tard.
+Les méthodes sont déclarées abstract parce que chaque travailleur auront une implémentation différente.
+
+ **ABSTRACTION**  permet de passer n'importe quel objet du moment qu'il a la **fonction travailler**.
+ C'est aussi le **POLYMORPHISME** dans notre cas on appel la même **fonction fairetravailler**  qui prend différente forme en fonction de l'objet qui est passé,dans notre cas **faireTravailler($employe1);** et **faireTravailler($etudiant);**
+
+
+- Nous créeons une nouvelle class Humain  pour abstraire les fonctionnalités communes à tous les travailleurs.
+La classe doit obligatoirement  être déclaré **abstract** si elle possède une méthode **abstract**.
 Une fonction qui n'a pas d'implementation (de contrat) est une fonction abstract.
-Comme pour l'interface la ou les méthode(s) (fonction) doit être implémenté dans toutes les class filles.La fonction sera abstract dans le parent et dans la class fille sera réel...
+Comme pour l'interface la ou les méthode(s) (fonction) doit être implémenté dans toutes les classes filles.La fonction sera abstract dans le parent et dans la class fille sera réel...
 
-Une class abstract ne peut pas être instancié!
+**Une class abstract ne peut pas être instancié!**
 
 ````php
 abstract class Humain{
